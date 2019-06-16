@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则验证在js中的运用</title>
+</head>
+<body>
+    <script>
+        //1..Javascript表单验证email，判断一个输入量是否为邮箱Email，通过正则表达式实现
+            function isEmail(str){
+                var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+                return reg.test(str);
+            }
+
+         //  2.JavaScript表单验证中文大写字母JavaScript表单验证英文大写字母，判断一个输入量是否为中文或大写的英文字母，通过正则表达式实现。
+
+            // 检查是否为有效的真实姓名，只能含有中文或大写的英文字母
+            function isValidTrueName(strName){
+                var str = Trim(strName);//判断是否为全英文大写或全中文，可以包含空格
+                var reg = /^[A-Z u4E00-u9FA5]+$/;
+                if(reg.test(str)){
+                    return false;
+                }
+                return true;
+            }
+
+        //3.JavaScript表单验证是否为中文，判断一个输入量是否为中文，通过正则表达式实现。
+            function isChn(str){
+                var reg = /^[u4E00-u9FA5]+$/;
+                if(!reg.test(str)){
+                    return false;
+                }
+                return true;
+            }
+
+        //4.JavaScript正则比较两个字符串，就是利用正则表达式快速比较两个字符串的不同字符。
+            var str1 = "求一个比较字符串处理功能";
+            var str2 = "求两或三个比较字符串处理";
+            var re = new RegExp("(?=.*?)[^" + str1 +"](?=.*?)|(?=.*?)[^" + str2 + "](?=.*?)", "g");
+            var arr;
+            while ((arr = re.exec(str1 + str2)) != null)
+            {
+                document.write(arr);
+            }
+
+        //JavaScript表单验证密码是检查输入框是否为有效的密码，
+            function checkValidPasswd(str){
+                var reg = /^[x00-x7f]+$/;
+                if(!reg.test(str)){
+                    return false;
+                }
+                if(str.length < 6 || str.length > 16){
+                    return false;
+                }
+                return true;
+            }
+
+        //6.JavaScript检查是否为整数
+            function isInteger( str ){
+                var regu = /^[-]{0,1}[0-9]{1,}$/;
+                return regu.test(str);
+            }
+
+        //7.JavaScript正则验证是否为空
+            function isNull(str){
+                if(str == "") return true;
+                var reg = "^[]+$";
+                var re = new RegExp(reg);
+                return re.test(str);
+            }
+
+        //8.通过正则去判断获得是是否是IP地址的格式，然后返回相应的结果
+            function isIP(strIP){
+                if(isNull(strIP)) return false;
+                var re = /^(\d+)\.(\d+)\.(\d+)\.(\d+)$/g;
+                if(re.test(strIP)){
+                    if( RegExp.$1 <256 && RegExp.$2<256 && RegExp.$3<256 && RegExp.$4<256) return true;
+                }
+
+                return false;
+            }
+
+    </script>
+
+    <script language="javascript">
+         //9.JavaScript屏蔽F5键
+          document.onkeydown = function(e){
+            e = window.event || e;
+            var keycode = e.keyCode || e.which;
+            if(keycode == 116){
+                if(window.event){
+                    try{e.keyCode = 0;}catch(e){}
+                    e.returnValue = false;
+
+                }else{
+                    e.preventDefault();
+                }
+            }
+         }
+    </script>
+
+
+   
+    <script>
+     //10.JavaScript表单验证自定义内容
+     function  isNumber(String)
+        {  
+            var  Letters  =  "1234567890-";  //可以自己增加可输入值
+            var  i;
+            var  c;
+             if(String.charAt(  0  )=='-')
+                return  false;
+             if(  String.charAt(  String.length  -  1  )  ==  '-'  )
+                return  false;
+            for(  i  =  0;  i  <  String.length;  i  ++  )
+            {  
+                c  =  String.charAt(  i  );
+                if  (Letters.indexOf(  c  )  <  0)
+                return  false;
+            }
+            return  true;
+        }
+        function  CheckForm()
+        {  
+            if(!  isNumber(document.form.TEL.value))  {  
+            alert("您的电话号码不合法！");
+            document.form.TEL.focus();
+            return  false;
+        }
+            return  true;
+        }
+
+    </script>
+
+    <script>
+        //JavaScript验证表单项不能为空
+        function  CheckForm()
+            {  
+                if  (document.form.name.value.length  ==  0)  {  
+                alert("请输入您姓名!");
+                document.form.name.focus();
+                return  false;
+            }
+                return  true;
+            }
+
+    </script>
+</body>
+</html>
