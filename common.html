@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.返回true,只要字符串中含有we即可 
+        // var str = "It is a dog!";        
+        // var reg = new RegExp("dog");        
+        // alert(reg.test(str)); 
+
+        //2、i 表示忽略大小写
+    //     var str = "It is a dog!";        
+    //     var reg = new RegExp("Dog");        
+    //    // alert(reg.test(str));  //返回false         
+        
+    //      var reg = new RegExp("Dog","i"); //第二个参数i表示不区分大小写        
+    //      alert(reg.test(str));  //返回true
+
+        //3、^ 表示字符开始位置，$表示字符结尾位置
+    //     var str = "It is a dog!";        
+    //     var reg = new RegExp("^dog");        
+    //    // alert(reg.test(str));  //返回false,因为we不在开始位置         
+
+    //     var reg = new RegExp("^It");        
+    //     alert(reg.test(str));  //返回true
+        
+
+        // var str = "It is a dog!";        
+        // var reg = new RegExp("^It$");        
+        // alert(reg.test(str));  //返回false,因为The虽然在开头，但不在末尾。         
+
+        // var str = "It is a dog!";        
+        // var reg = new RegExp("dog!$");        
+        // alert(reg.test(str));  //返回true
+
+
+        // 4、
+        // \s表示匹配任何空白字符，包括空格、制表符、换页符等；          
+        // \d表示0-9任意一个数字；          
+        // \w表示任意一个字母、数字和下划线；          
+        // \. 小数点可以匹配除了换行符（/n）以为的其他任意字符；         
+        //  +表示字符至少要出现一次
+
+        // var str = "dog 8";    
+        // var re = /^[a-z]+\o\d+/;    
+        // alert(re.test(str)); //返回false
+
+        // var str = "suing 8";    
+        // var re = /^[a-z]+\s\d+/;    
+        // alert(re.test(str)); //返回true
+
+
+        // var array = re.exec(str);    
+        // alert(array[0]); //数组的第一个元素为完整的匹配内容
+
+
+        //5、[ ]表示匹配指定范围内任意字符
+        // var str = "we are friends";         
+        // var reg = new RegExp("[a-z]");        
+        // alert(reg.test(str));  //返回true         
+
+        // var str = "456789we are friends";        
+        // var reg = new RegExp("^[a-z]"); //以字母开头        
+        // alert(reg.test(str));  //返回false
+
+
+        //6、用（）来创建子匹配
+        var str = "jQuery 1.11";  //下面获取主版本号1和次版本号11
+        // var re = /\d+\.+\d+/;
+        // var array = re.exec(str); //这种方法只能获得1.11
+        // alert(array[0]); //数组的第一个元素为完整的匹配内容1.11
+    
+        var re = /(\d+)\.+(\d+)/;  //利用括号创建子元素
+        var array = re.exec(str); 
+        alert(array[0]); //完整的匹配字符串1.11
+        alert(array[1]);//第一个子元素1
+        alert(array[2]); //第二个子元素11
+
+
+
+
+
+
+    </script>
+</body>
+</html>
