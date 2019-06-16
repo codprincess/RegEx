@@ -1,3 +1,4 @@
+//语法部分
 //实例化
 //1.字面量 var reg = \/bis/b\g;
 //2.构造函数 var reg=new RegExp('\\bis\\b',g);
